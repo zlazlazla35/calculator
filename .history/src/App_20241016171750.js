@@ -73,20 +73,13 @@ function App() {
     setOper2(true);
 
 
-    // console.log(num == '')
+
       calResult();
       click(e.target );
-
-      if(num == ''){
-        alert('다시 확인 후 클릭해주세요');
-        window.location.reload();
-
-      }if(isNaN(num)==true){
-        alert('다시 확인 후 클릭해주세요');
-        window.location.reload();
-      }
   }
 
+
+  console.log(num == '')
 
   const calResult = ()=>{
     switch(oper){
@@ -133,15 +126,7 @@ function App() {
       setOper2(false);
       output.current.style.color = '#fff'
     }else{
-          output.current.style.color = '#232323'
-    }
-
-
-    if(num == 0){
-      setNum("");
-      setAfterNum("");
-      setOper("");
-      setOper2(false);
+            output.current.style.color = '#232323'
     }
   }, [oper])
 

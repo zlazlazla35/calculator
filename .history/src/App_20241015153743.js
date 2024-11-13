@@ -25,19 +25,17 @@ let Btn = styled.button`
   border-radius: 20%;
   height : 50px;
   border: none;
-  box-shadow:4px 4px 3px rgba(0, 0, 0, 0.3);
-
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
 `
 
 let ZeroBtn = styled.button`
   width : 100%;
   background-color: #eee;
   font-size : 18px;
-  border-radius: 10px;
+  border-radius: 20%;
   height : 50px;
   border: none;
-  box-shadow:4px 4px 3px rgba(0, 0, 0, 0.3);
-  transition-duration: 0.3s;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
   grid-column: 1/3;
 `
 
@@ -51,8 +49,7 @@ function App() {
 
   const [oper, setOper] = useState("");
   const [oper2, setOper2] = useState(false);
-  const output = useRef();
-  const active = `active`
+  const output = useRef()
 
 
 
@@ -65,28 +62,14 @@ function App() {
       setAfterNum( (prev) => prev + e.target.value  ) 
     }
 
-    click(e.target )
   }
 
   const getOper = (e)=>{
     setOper( () => e.target.value );
     setOper2(true);
 
-
-    // console.log(num == '')
       calResult();
-      click(e.target );
-
-      if(num == ''){
-        alert('다시 확인 후 클릭해주세요');
-        window.location.reload();
-
-      }if(isNaN(num)==true){
-        alert('다시 확인 후 클릭해주세요');
-        window.location.reload();
-      }
   }
-
 
   const calResult = ()=>{
     switch(oper){
@@ -131,63 +114,44 @@ function App() {
       setAfterNum("");
       setOper("");
       setOper2(false);
-      output.current.style.color = '#fff'
-    }else{
-          output.current.style.color = '#232323'
-    }
 
-
-    if(num == 0){
-      setNum("");
-      setAfterNum("");
-      setOper("");
-      setOper2(false);
     }
   }, [oper])
 
 
-
-  function click(a){
-    a.classList.add(active);
-
-    setTimeout(()=>{
-      a.classList.remove(active);
-    }, 100)
-  }
+  console.log(output)
 
 
   return (
     <div className="App">
       <div className="contents">
         <Calculating>
-            <input className="output" ref={output} value={ num + oper  + afterNum  }/>
+            <input className="output" ref={output} defaultValue={ num + oper  + afterNum  }/>
           <Btnbox>
             {/* <Btn value='ac' onClick={getOper} bg="#8630f5">AC</Btn> */}
-            <Btn value='del' style={{gridColumn : '1/3', borderRadius : '10px'}} onClick={getOper} bg="#8630f5">DEL</Btn>
-            <Btn value='%' onClick={getOper} bg="#8630f5">%</Btn>
-            <Btn value='÷' onClick={getOper} bg="#8630f5">÷</Btn>
-            <Btn value={7} onClick={getNum}>7</Btn>
-            <Btn value={8} onClick={getNum}>8</Btn>
-            <Btn value={9} onClick={getNum}>9</Btn>
-            <Btn value='*' onClick={getOper}  bg="#8630f5">*</Btn>
-            <Btn value={4} onClick={getNum}>4</Btn>
-            <Btn value={5} onClick={getNum}>5</Btn>
-            <Btn value={6} onClick={getNum}>6</Btn>
-            <Btn value='-'  onClick={getOper}  bg="#8630f5">-</Btn>
-            <Btn value={1} onClick={getNum}>1</Btn>
-            <Btn value={2} onClick={getNum}>2</Btn>
-            <Btn value={3} onClick={getNum}>3</Btn>
-            <Btn value="+"  onClick={getOper} bg="#8630f5">+</Btn>
-            <ZeroBtn value={0} onClick={getNum}>0</ZeroBtn>
-            <Btn value='.' onClick={getNum}>.</Btn>
-            <Btn value='='  onClick={getOper} bg="#8630f5"> =</Btn>
+            <Btn defaultValue='del' style={{gridColumn : '1/3'}} onClick={getOper} bg="#8630f5">DEL</Btn>
+            <Btn defaultValue='%' onClick={getOper} bg="#8630f5">%</Btn>
+            <Btn defaultValue='÷' onClick={getOper} bg="#8630f5">÷</Btn>
+            <Btn defaultValue={7} onClick={getNum}>7</Btn>
+            <Btn defaultValue={8} onClick={getNum}>8</Btn>
+            <Btn defaultValue={9} onClick={getNum}>9</Btn>
+            <Btn defaultValue='*' onClick={getOper}  bg="#8630f5">*</Btn>
+            <Btn defaultValue={4} onClick={getNum}>4</Btn>
+            <Btn defaultValue={5} onClick={getNum}>5</Btn>
+            <Btn defaultValue={6} onClick={getNum}>6</Btn>
+            <Btn defaultValue='-'  onClick={getOper}  bg="#8630f5">-</Btn>
+            <Btn defaultValue={1} onClick={getNum}>1</Btn>
+            <Btn defaultValue={2} onClick={getNum}>2</Btn>
+            <Btn defaultValue={3} onClick={getNum}>3</Btn>
+            <Btn defaultValue="+"  onClick={getOper} bg="#8630f5">+</Btn>
+            <ZeroBtn defaultValue={0} onClick={getNum}>0</ZeroBtn>
+            <Btn defaultValue='.' onClick={getNum}>.</Btn>
+            <Btn defaultValue='='  onClick={getOper} bg="#8630f5"> =</Btn>
           </Btnbox>
         </Calculating>
       </div>
     </div>
   );
 }
-
-// 숫자 없이 연산자 못누르게
 
 export default App;

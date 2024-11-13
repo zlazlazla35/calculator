@@ -25,20 +25,20 @@ let Btn = styled.button`
   border-radius: 20%;
   height : 50px;
   border: none;
-  box-shadow:4px 4px 3px rgba(0, 0, 0, 0.3);
-
+  box-shadow:0px 4px 0px #8630f5;
+  transition-duration: 0.3s;
 `
 
 let ZeroBtn = styled.button`
   width : 100%;
   background-color: #eee;
   font-size : 18px;
-  border-radius: 10px;
+  border-radius: 20%;
   height : 50px;
   border: none;
-  box-shadow:4px 4px 3px rgba(0, 0, 0, 0.3);
-  transition-duration: 0.3s;
+  box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.3);
   grid-column: 1/3;
+  transition-duration: 0.3s;
 `
 
 
@@ -65,26 +65,14 @@ function App() {
       setAfterNum( (prev) => prev + e.target.value  ) 
     }
 
-    click(e.target )
   }
 
   const getOper = (e)=>{
     setOper( () => e.target.value );
     setOper2(true);
 
-
-    // console.log(num == '')
       calResult();
-      click(e.target );
-
-      if(num == ''){
-        alert('다시 확인 후 클릭해주세요');
-        window.location.reload();
-
-      }if(isNaN(num)==true){
-        alert('다시 확인 후 클릭해주세요');
-        window.location.reload();
-      }
+      click(e.target )
   }
 
 
@@ -133,26 +121,19 @@ function App() {
       setOper2(false);
       output.current.style.color = '#fff'
     }else{
-          output.current.style.color = '#232323'
-    }
-
-
-    if(num == 0){
-      setNum("");
-      setAfterNum("");
-      setOper("");
-      setOper2(false);
+            output.current.style.color = '#232323'
     }
   }, [oper])
 
 
 
+  // useEffect(()=>{
+  //   console.log(output.current)
+  // }, [output])
+
   function click(a){
     a.classList.add(active);
-
-    setTimeout(()=>{
-      a.classList.remove(active);
-    }, 100)
+    // console.log(a.classList.add(active))
   }
 
 
@@ -163,7 +144,7 @@ function App() {
             <input className="output" ref={output} value={ num + oper  + afterNum  }/>
           <Btnbox>
             {/* <Btn value='ac' onClick={getOper} bg="#8630f5">AC</Btn> */}
-            <Btn value='del' style={{gridColumn : '1/3', borderRadius : '10px'}} onClick={getOper} bg="#8630f5">DEL</Btn>
+            <Btn value='del' style={{gridColumn : '1/3'}} onClick={getOper} bg="#8630f5">DEL</Btn>
             <Btn value='%' onClick={getOper} bg="#8630f5">%</Btn>
             <Btn value='÷' onClick={getOper} bg="#8630f5">÷</Btn>
             <Btn value={7} onClick={getNum}>7</Btn>
@@ -188,6 +169,6 @@ function App() {
   );
 }
 
-// 숫자 없이 연산자 못누르게
-
 export default App;
+
+// 버튼 클릭시 그 버튼한테 active 클레스명 잠깐 붙였다가 떼어주기

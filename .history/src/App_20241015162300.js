@@ -25,8 +25,8 @@ let Btn = styled.button`
   border-radius: 20%;
   height : 50px;
   border: none;
-  box-shadow:4px 4px 3px rgba(0, 0, 0, 0.3);
-
+  box-shadow:6px 4px 4px rgba(0, 0, 0, 0.3);
+  transition-duration: 0.3s;
 `
 
 let ZeroBtn = styled.button`
@@ -36,7 +36,7 @@ let ZeroBtn = styled.button`
   border-radius: 10px;
   height : 50px;
   border: none;
-  box-shadow:4px 4px 3px rgba(0, 0, 0, 0.3);
+  box-shadow:0px 4px 0px rgba(0, 0, 0, 0.3);
   transition-duration: 0.3s;
   grid-column: 1/3;
 `
@@ -65,26 +65,14 @@ function App() {
       setAfterNum( (prev) => prev + e.target.value  ) 
     }
 
-    click(e.target )
   }
 
   const getOper = (e)=>{
     setOper( () => e.target.value );
     setOper2(true);
 
-
-    // console.log(num == '')
       calResult();
-      click(e.target );
-
-      if(num == ''){
-        alert('다시 확인 후 클릭해주세요');
-        window.location.reload();
-
-      }if(isNaN(num)==true){
-        alert('다시 확인 후 클릭해주세요');
-        window.location.reload();
-      }
+      click(e.target )
   }
 
 
@@ -133,26 +121,19 @@ function App() {
       setOper2(false);
       output.current.style.color = '#fff'
     }else{
-          output.current.style.color = '#232323'
-    }
-
-
-    if(num == 0){
-      setNum("");
-      setAfterNum("");
-      setOper("");
-      setOper2(false);
+            output.current.style.color = '#232323'
     }
   }, [oper])
 
 
 
+  // useEffect(()=>{
+  //   console.log(output.current)
+  // }, [output])
+
   function click(a){
     a.classList.add(active);
-
-    setTimeout(()=>{
-      a.classList.remove(active);
-    }, 100)
+    // console.log(a.classList.add(active))
   }
 
 
@@ -188,6 +169,6 @@ function App() {
   );
 }
 
-// 숫자 없이 연산자 못누르게
-
 export default App;
+
+// 버튼 클릭시 그 버튼한테 active 클레스명 잠깐 붙였다가 떼어주기

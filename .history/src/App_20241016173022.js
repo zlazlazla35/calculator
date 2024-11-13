@@ -142,6 +142,7 @@ function App() {
       setAfterNum("");
       setOper("");
       setOper2(false);
+      output.current.style.color = '#fff'
     }
   }, [oper])
 

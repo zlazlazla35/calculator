@@ -138,7 +138,7 @@ function App() {
 
 
     if(num == 0){
-      setNum("");
+      setNum(0);
       setAfterNum("");
       setOper("");
       setOper2(false);

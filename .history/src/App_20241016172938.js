@@ -136,13 +136,10 @@ function App() {
           output.current.style.color = '#232323'
     }
 
-
-    if(num == 0){
-      setNum("");
-      setAfterNum("");
-      setOper("");
-      setOper2(false);
-    }
+    console.log(num)
+    // if(num == 0){
+    //   console.log('결과값이 0')
+    // }
   }, [oper])
 
 

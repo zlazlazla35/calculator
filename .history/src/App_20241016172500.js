@@ -77,13 +77,11 @@ function App() {
       calResult();
       click(e.target );
 
+      
       if(num == ''){
-        alert('다시 확인 후 클릭해주세요');
-        window.location.reload();
-
+        console.log('비어있음')
       }if(isNaN(num)==true){
-        alert('다시 확인 후 클릭해주세요');
-        window.location.reload();
+        console.log('NaN임')
       }
   }
 
@@ -133,15 +131,7 @@ function App() {
       setOper2(false);
       output.current.style.color = '#fff'
     }else{
-          output.current.style.color = '#232323'
-    }
-
-
-    if(num == 0){
-      setNum("");
-      setAfterNum("");
-      setOper("");
-      setOper2(false);
+            output.current.style.color = '#232323'
     }
   }, [oper])
 

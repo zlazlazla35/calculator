@@ -138,10 +138,7 @@ function App() {
 
 
     if(num == 0){
-      setNum("");
-      setAfterNum("");
-      setOper("");
-      setOper2(false);
+      console.log('결과값이 0')
     }
   }, [oper])
 
